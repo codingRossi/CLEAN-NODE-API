@@ -1,4 +1,4 @@
-import { HttpRequest, httpResponse } from "../protocols/http";
+import { HttpRequest, httpResponse } from "./http";
 
 export interface Controller {
     handle( httpRequest: HttpRequest): httpResponse
