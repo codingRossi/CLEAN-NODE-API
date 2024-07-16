@@ -58,5 +58,4 @@ describe('SignUpController', () => {
         expect(httpResponse.body).toEqual(new MissingParamError('passwordConfirmation'))
     })
 
-
 })
