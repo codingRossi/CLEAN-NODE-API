@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1721164759968" clover="3.2.0">
-  <project timestamp="1721164759968" name="All files">
-    <metrics statements="44" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0" elements="52" coveredelements="0" complexity="0" loc="44" ncloc="44" packages="3" files="4" classes="4"/>
+<coverage generated="1721165072152" clover="3.2.0">
+  <project timestamp="1721165072152" name="All files">
+    <metrics statements="42" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0" elements="50" coveredelements="0" complexity="0" loc="42" ncloc="42" packages="3" files="4" classes="4"/>
     <package name="controllers">
-      <metrics statements="29" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <metrics statements="27" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="signup.ts" path="E:\code\CLEAN-NODE-API\src\presentation\controllers\signup.ts">
-        <metrics statements="29" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="27" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
@@ -33,8 +33,6 @@
         <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
       </file>
     </package>
     <package name="controllers.protocols">
