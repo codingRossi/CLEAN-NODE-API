@@ -1,11 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1721230286233" clover="3.2.0">
-  <project timestamp="1721230286233" name="All files">
-    <metrics statements="56" coveredstatements="56" conditionals="13" coveredconditionals="13" methods="5" coveredmethods="5" elements="74" coveredelements="74" complexity="0" loc="56" ncloc="56" packages="2" files="2" classes="2"/>
-    <package name="controllers.protocols.signup">
-      <metrics statements="39" coveredstatements="39" conditionals="10" coveredconditionals="10" methods="2" coveredmethods="2"/>
+<coverage generated="1721231824353" clover="3.2.0">
+  <project timestamp="1721231824354" name="All files">
+    <metrics statements="85" coveredstatements="59" conditionals="18" coveredconditionals="14" methods="9" coveredmethods="5" elements="112" coveredelements="78" complexity="0" loc="85" ncloc="85" packages="6" files="7" classes="7"/>
+    <package name="domain.models">
+      <metrics statements="6" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="account.ts" path="E:\code\CLEAN-NODE-API\src\domain\models\account.ts">
+        <metrics statements="6" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="domain.usecases">
+      <metrics statements="11" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="add-account.ts" path="E:\code\CLEAN-NODE-API\src\domain\usecases\add-account.ts">
+        <metrics statements="11" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="presentation.controllers.protocols">
+      <metrics statements="5" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="controller.ts" path="E:\code\CLEAN-NODE-API\src\presentation\controllers\protocols\controller.ts">
+        <metrics statements="5" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="presentation.controllers.protocols.signup">
+      <metrics statements="43" coveredstatements="39" conditionals="12" coveredconditionals="11" methods="3" coveredmethods="2"/>
+      <file name="signup-protocols.ts" path="E:\code\CLEAN-NODE-API\src\presentation\controllers\protocols\signup\signup-protocols.ts">
+        <metrics statements="4" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
       <file name="signup.ts" path="E:\code\CLEAN-NODE-API\src\presentation\controllers\protocols\signup\signup.ts">
-        <metrics statements="39" coveredstatements="39" conditionals="10" coveredconditionals="10" methods="2" coveredmethods="2"/>
+        <metrics statements="39" coveredstatements="39" conditionals="11" coveredconditionals="11" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -39,7 +86,7 @@
         <line num="31" count="4" type="stmt"/>
         <line num="32" count="4" type="stmt"/>
         <line num="33" count="4" type="stmt"/>
-        <line num="34" count="4" type="stmt"/>
+        <line num="34" count="3" type="cond" truecount="1" falsecount="0"/>
         <line num="35" count="11" type="cond" truecount="1" falsecount="0"/>
         <line num="36" count="2" type="stmt"/>
         <line num="37" count="2" type="stmt"/>
@@ -47,7 +94,16 @@
         <line num="39" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="helper">
+    <package name="presentation.error">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="E:\code\CLEAN-NODE-API\src\presentation\error\index.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="presentation.helper">
       <metrics statements="17" coveredstatements="17" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
       <file name="http-helper.ts" path="E:\code\CLEAN-NODE-API\src\presentation\helper\http-helper.ts">
         <metrics statements="17" coveredstatements="17" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>

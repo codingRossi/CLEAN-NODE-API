@@ -2,3 +2,4 @@ na interface HttpRequest o boy deve ser any pois dependendo da rota que chamar a
 
 ESTUDAR TIPOS DE COMMITS
 ESTUDAR ARQUITETURA SOLID
+ESTUDAR PROMISE
