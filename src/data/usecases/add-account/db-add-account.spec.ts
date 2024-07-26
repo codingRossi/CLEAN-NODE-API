@@ -96,15 +96,15 @@ describe('DbAddAccount Usecase', () => {
     })
 
     test('Should call account on sucess', async () => {
-        const { sut} = makeSut()
-        const accountdata = {
+        const { sut } = makeSut()
+        const accountData = {
             name: 'valid_name',
             email: 'valid_email',
             password: 'valid_password'
         }
-        const account = await sut.add(accountdata)
+        const account = await sut.add(accountData)
         expect(account).toEqual({
-            id: 'valid_id ',
+            id: 'valid_id',
             name: 'valid_name',
             email: 'valid_email',
             password: 'hashed_password'
