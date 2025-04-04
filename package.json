@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/codingRossi/CLEAN-NODE-API/issues"
   },
-  "homepage": "https://github.com/codingRossi/CLEAN-NODE-API#readme"
+  "homepage": "https://github.com/codingRossi/CLEAN-NODE-API#readme",
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "typescript": "^5.8.2"
+  }
 }
