@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/codingRossi/CLEAN-NODE-API/issues"
   },
-  "homepage": "https://github.com/codingRossi/CLEAN-NODE-API#readme"
+  "homepage": "https://github.com/codingRossi/CLEAN-NODE-API#readme",
+  "devDependencies": {
+    "git-commit-msg-linter": "^5.0.8"
+  }
 }
