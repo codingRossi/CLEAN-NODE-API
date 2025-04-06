@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/codingRossi/CLEAN-NODE-API#readme",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.14.0",
     "@types/validator": "^13.12.3",
@@ -44,6 +45,7 @@
     "babel-preset-current-node-syntax": "^1.1.0",
     "babel-preset-jest": "^29.6.3",
     "balanced-match": "^1.0.2",
+    "bcrypt": "^5.1.1",
     "brace-expansion": "^1.1.11",
     "braces": "^3.0.3",
     "browserslist": "^4.24.4",
