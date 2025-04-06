@@ -23,9 +23,9 @@ const makeAddAccount = () => {
     add(account: AddAccountModel): AccountModel {
       const FakeAccount = {
         id: "valid_id",
-        name: "any_name",
-        email: "any_email@gmail.com",
-        password: "any_password",
+        name: "valid_name",
+        email: "valid_email@gmail.com",
+        password: "valid_password",
       }
       return FakeAccount
     }
@@ -205,5 +205,25 @@ describe("Signup Controller", () => {
     const httpResponse = sut.handle(httpRequest)
     expect(httpResponse.statusCode).toBe(500)
     expect(httpResponse.body).toEqual(new ServerError())
+  })
+
+  test("Should return 200 if valid data is provided", () => {
+    const { sut } = makeSut()
+    const httpRequest = {
+      body: {
+        name: "valid_name",
+        email: "valid_email",
+        password: "valid_password",
+        passwordConfirmation: "valid_password"
+      }
+    }
+    const httpResponse = sut.handle(httpRequest)
+    expect(httpResponse.statusCode).toBe(200)
+    expect(httpResponse.body).toEqual({
+      id: "valid_id",
+      name: "valid_name",
+      email: "valid_email@gmail.com",
+      password: "valid_password",
+    })
   })
 })
