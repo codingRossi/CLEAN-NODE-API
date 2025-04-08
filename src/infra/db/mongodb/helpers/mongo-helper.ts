@@ -3,8 +3,10 @@ import { AccountModel } from "../../../../domain/models/account"
 
 export const MongoHelper = {
   client: null as MongoClient,
+  url: null as string,
 
   async connect(url: string): Promise<void> {
+    this.url = url
     this.client = await MongoClient.connect(url)
   },
 
@@ -12,7 +14,10 @@ export const MongoHelper = {
     await this.client.close()
   },
 
-  getColletion(name: string): Collection {
+  async getColletion(name: string): Promise<Collection> {
+    if (!this.client?.isConnected) {
+      await this.connect(this.url)
+    }
     return this.client.db().collection(name)
   },
 
