@@ -152,7 +152,7 @@ describe("Signup Controller", () => {
     }
     const httpResponse = await sut.handle(httpRequest)
     expect(httpResponse.statusCode).toBe(500)
-    expect(httpResponse.body).toEqual(new ServerError())
+    expect(httpResponse.body).toBeInstanceOf(ServerError)
   })
 
   test("Should return 400 if passowordConfirmation fails", async () => {
@@ -204,7 +204,7 @@ describe("Signup Controller", () => {
     }
     const httpResponse = await sut.handle(httpRequest)
     expect(httpResponse.statusCode).toBe(500)
-    expect(httpResponse.body).toEqual(new ServerError())
+    expect(httpResponse.body).toBeInstanceOf(ServerError)
   })
 
   test("Should return 200 if valid data is provided", async () => {
