@@ -14,19 +14,8 @@ const makeFakeRequest = (): HttpRequest => ({
 
 interface SutTypes {
   sut: SignUpController
-  emailValidatorStub: EmailValidator
   addAccountStub: AddAccount,
   validationStub: Validation
-}
-
-const makeEmailValidator = () => {
-  class EmailValidatorStub implements EmailValidator {
-    isValid(email: string): boolean {
-      return true
-    }
-  }
-  const emailValidatorStub = new EmailValidatorStub()
-  return emailValidatorStub
 }
 
 const makeFakeAccount = (): AccountModel => ({
@@ -56,40 +45,16 @@ const makeValidator = (): Validation => {
 }
 
 const makeSut = async (): Promise<SutTypes> => {
-  const emailValidatorStub = makeEmailValidator()
   const addAccountStub = makeAddAccount()
   const validationStub = makeValidator()
-  const sut = new SignUpController(emailValidatorStub, addAccountStub, validationStub)
+  const sut = new SignUpController(addAccountStub, validationStub)
   return {
     sut,
-    emailValidatorStub,
     addAccountStub,
     validationStub
   }
 }
 describe("Signup Controller", () => {
-  test("Should return 400 if an invalid email is provided", async () => {
-    const { sut, emailValidatorStub } = await makeSut()
-    jest.spyOn(emailValidatorStub, "isValid").mockReturnValueOnce(false)
-    const httpResponse = await sut.handle(makeFakeRequest())
-    expect(httpResponse.statusCode).toBe(400)
-    expect(httpResponse).toEqual(badRequest(new InvalidParamError("email")))
-  })
-
-  test("Should call EmailValidator with correct email", async () => {
-    const { sut, emailValidatorStub } = await makeSut()
-    const isValidSpy = jest.spyOn(emailValidatorStub, "isValid")
-    await sut.handle(makeFakeRequest())
-    expect(isValidSpy).toHaveBeenCalledWith("any_email@gmail.com")
-  })
-
-  test("Should return 500 if EmailValidator throws", async () => {
-    const { sut, emailValidatorStub } = await makeSut()
-    jest.spyOn(emailValidatorStub, "isValid").mockImplementationOnce(() => { throw new Error })
-    const httpResponse = await sut.handle(makeFakeRequest())
-    expect(httpResponse).toEqual(serverError(new ServerError(null)))
-  })
-
   test("Should call AddAccount with correct values", async () => {
     const { sut, addAccountStub } = await makeSut()
     const addSpy = jest.spyOn(addAccountStub, "add")
