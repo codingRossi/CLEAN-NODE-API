@@ -1,6 +1,6 @@
 import { SignUpController } from "./signup"
 import { InvalidParamError, MissingParamError, ServerError } from "../../errors"
-import { AccountModel, AddAccount, AddAccountModel, EmailValidator, HttpRequest } from "./signup-protocols"
+import { AccountModel, AddAccount, AddAccountModel, EmailValidator, HttpRequest, Validation } from "./signup-protocols"
 import { badRequest, ok, serverError } from "../../helper/httpHelper"
 
 const makeFakeRequest = (): HttpRequest => ({
@@ -15,7 +15,8 @@ const makeFakeRequest = (): HttpRequest => ({
 interface SutTypes {
   sut: SignUpController
   emailValidatorStub: EmailValidator
-  addAccountStub: AddAccount
+  addAccountStub: AddAccount,
+  validationStub: Validation
 }
 
 const makeEmailValidator = () => {
@@ -45,14 +46,25 @@ const makeAddAccount = (): AddAccount => {
   return new AddAccountStub()
 }
 
+const makeValidator = (): Validation => {
+  class ValidatorStub implements Validation {
+    validate(input: any): Error {
+      return null
+    }
+  }
+  return new ValidatorStub()
+}
+
 const makeSut = async (): Promise<SutTypes> => {
   const emailValidatorStub = makeEmailValidator()
   const addAccountStub = makeAddAccount()
-  const sut = new SignUpController(emailValidatorStub, addAccountStub)
+  const validationStub = makeValidator()
+  const sut = new SignUpController(emailValidatorStub, addAccountStub, validationStub)
   return {
     sut,
     emailValidatorStub,
-    addAccountStub
+    addAccountStub,
+    validationStub
   }
 }
 describe("Signup Controller", () => {
