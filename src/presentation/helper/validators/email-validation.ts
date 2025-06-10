@@ -1,7 +1,7 @@
 import { InvalidParamError, MissingParamError } from "../../errors";
 import { EmailValidator } from "../../protocols/emailValidator";
 import { badRequest } from "../http/httpHelper";
-import { Validation } from "./validators";
+import { Validation } from "../../protocols/validators";
 
 export class EmailValidation implements Validation {
   private readonly fieldName: string
