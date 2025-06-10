@@ -1,5 +1,6 @@
 import { AuthenticationModel } from "../../../domain/use-cases/authentication"
 import { HashComparer } from "../../protocols/cryptography/hash-compare"
+import { TokenGenerator } from "../../protocols/cryptography/token-generator"
 import { LoadAccountByEmailRepository } from "../../protocols/db/load-account-by-email-repository"
 import { AccountModel } from "../add-account/db-add-account-protocols"
 import { DbAuthentication } from "./db-authentication"
@@ -34,21 +35,33 @@ const makeHashCompare = (): HashComparer => {
     return new HashComparerStub()
 }
 
+const makeTokenGenerator = (): TokenGenerator => {
+    class TokenGeneratorStub implements TokenGenerator {
+        async generate(id: string): Promise<string> {
+            return new Promise(resolve => resolve("any_token"))
+        }
+    }
+    return new TokenGeneratorStub()
+}
+
 
 interface SutTypes {
     sut: DbAuthentication
     loadAccountByEmailRepository: LoadAccountByEmailRepository,
-    hashCompareStub: HashComparer
+    hashCompareStub: HashComparer,
+    tokenGeneratorStub: TokenGenerator
 }
 
 const makeSut = (): SutTypes => {
     const loadAccountByEmailRepository = makeLoadAccountByEmailRepository()
     const hashCompareStub = makeHashCompare()
-    const sut = new DbAuthentication(loadAccountByEmailRepository, hashCompareStub)
+    const tokenGeneratorStub =  makeTokenGenerator()
+    const sut = new DbAuthentication(loadAccountByEmailRepository, hashCompareStub, tokenGeneratorStub)
     return {
         sut,
         loadAccountByEmailRepository,
-        hashCompareStub
+        hashCompareStub,
+        tokenGeneratorStub
     }
 }
 
@@ -95,4 +108,10 @@ describe("DbAuthentication", () => {
         expect(accessToken).toBeNull()
     })
 
+    test("Should call TokenGenerator with correct id", async () => {
+        const { sut, tokenGeneratorStub } = makeSut()
+        const generateSpy = jest.spyOn(tokenGeneratorStub, "generate")
+        await sut.auth(makeFakeAuthentication())
+        expect(generateSpy).toHaveBeenCalledWith("any_id")
+    })
 })
