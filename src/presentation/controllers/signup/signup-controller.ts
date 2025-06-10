@@ -3,7 +3,7 @@ import { badRequest, ok, serverError } from "../../helper/http/httpHelper"
 import { Controller, HttpRequest, HttpResponse, AddAccount, Validation } from "./signup-controller-protocols"
 
 export class SignUpController implements Controller {
-  constructor(private readonly addAccount: AddAccount, private readonlyvalidation: Validation) {}
+  constructor(private readonly addAccount: AddAccount, private readonly validation: Validation) {}
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const error = this.validation.validate(httpRequest.body)
