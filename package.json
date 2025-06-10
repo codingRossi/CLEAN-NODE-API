@@ -7,10 +7,10 @@
     "start": "sucrase-node src/main/server.ts",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand",
-    "test:unit": "bun test -- --watch -c jest-unit-config.js --runInBand",
-    "test:integration": "bun test -- --watch -c jest-integration-config.js",
-    "test:staged": "bun test -- --findRelatedTests",
-    "test:ci": "bun test -- --coverage"
+    "test:unit": "npm test -- --watch -c jest-unit-config.js --runInBand",
+    "test:integration": "npm test -- --watch -c jest-integration-config.js",
+    "test:staged": "npm test -- --findRelatedTests",
+    "test:ci": "npm test -- --coverage"
   },
   "repository": {
     "type": "git",
@@ -177,7 +177,7 @@
     "node-int64": "^0.4.0",
     "node-releases": "^2.0.19",
     "normalize-path": "^3.0.0",
-    "bun-run-path": "^4.0.1",
+    "npm-run-path": "^4.0.1",
     "once": "^1.4.0",
     "onetime": "^5.1.2",
     "p-limit": "^3.1.0",
