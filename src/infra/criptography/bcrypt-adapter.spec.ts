@@ -50,4 +50,5 @@ describe("Bcrypt Adapter", () => {
     expect(isValid).toHaveBeenCalledWith("any_value", salt)
   })
 
+  
 })  
