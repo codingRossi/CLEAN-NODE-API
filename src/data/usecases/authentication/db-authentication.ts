@@ -1,11 +1,14 @@
 import { Authentication, AuthenticationModel } from "../../../domain/use-cases/authentication";
 import { LoadAccountByEmailRepository } from "../../protocols/db/load-account-by-email-repository";
 import { HashComparer } from "../../protocols/cryptography/hash-compare";
+import { TokenGenerator } from "../../protocols/cryptography/token-generator";
 
 export class DbAuthentication implements Authentication {
     private readonly loadAccountByEmailRepository: LoadAccountByEmailRepository;
     private readonly hashCompare: HashComparer;
-    constructor(loadAccountByEmailRepository: LoadAccountByEmailRepository, hashCompare: HashComparer) {
+    tokenGenerator: TokenGenerator
+    constructor(loadAccountByEmailRepository: LoadAccountByEmailRepository, hashCompare: HashComparer, tokenGenerator: TokenGenerator) {
+        this.tokenGenerator = tokenGenerator;
         this.loadAccountByEmailRepository = loadAccountByEmailRepository;
         this.hashCompare = hashCompare
     }
@@ -13,6 +16,7 @@ export class DbAuthentication implements Authentication {
         const account = await this.loadAccountByEmailRepository.load(authentication.email);
         if (account) {
             await this.hashCompare.compare(authentication.password, account.password);
+            await this.tokenGenerator.generate(account.id)
         }
         return null
     }
