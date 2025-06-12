@@ -1,10 +1,18 @@
 {
   "name": "clean-node-api",
+<<<<<<< HEAD
   "version": "1.2.0",
+=======
+  "version": "1.1.0",
+>>>>>>> feat/login
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "sucrase-node src/main/server.ts",
+    "start": "node src/main/server.ts",
+    "build": "rimraf dist && tsc",
+    "debug": "node --inspect=0.0.0.0:9222 --nolazy src/main/server.ts",
+    "down": "sudo docker-compose down",
+    "up": "npm run build && sudo docker-compose up -d",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand",
     "test:unit": "npm test -- --watch -c jest-unit-config.js --runInBand",
@@ -25,16 +33,17 @@
   },
   "homepage": "https://github.com/codingRossi/CLEAN-NODE-API#readme",
   "devDependencies": {
-    "@shelf/jest-mongodb": "^5.1.0",
+    "@shelf/jest-mongodb": "^5.2.2",
     "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.1",
     "@types/jest": "^29.5.14",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/mongodb": "^4.0.6",
     "@types/node": "^22.14.0",
     "@types/supertest": "^6.0.3",
     "@types/validator": "^13.12.3",
     "jest": "^29.7.0",
-    "sucrase": "^3.35.0",
+    "rimraf": "^5.0.10",
     "supertest": "^7.1.0",
     "ts-jest": "^29.3.1",
     "typescript": "^5.8.2"
@@ -92,7 +101,6 @@
     "exit": "^0.1.2",
     "expect": "^29.7.0",
     "express": "^5.1.0",
-    "fast-glob": "^3.3.3",
     "fast-json-stable-stringify": "^2.1.0",
     "fb-watchman": "^2.0.2",
     "filelist": "^1.0.4",
@@ -158,6 +166,7 @@
     "jsesc": "^3.1.0",
     "json-parse-even-better-errors": "^2.3.1",
     "json5": "^2.2.3",
+    "jsonwebtoken": "^9.0.2",
     "kleur": "^3.0.3",
     "leven": "^3.1.0",
     "lines-and-columns": "^1.2.4",
@@ -238,5 +247,8 @@
     "yargs": "^17.7.2",
     "yargs-parser": "^21.1.1",
     "yocto-queue": "^0.1.0"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
