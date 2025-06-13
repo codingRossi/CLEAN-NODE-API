@@ -1,16 +1,12 @@
 {
   "name": "clean-node-api",
-<<<<<<< HEAD
   "version": "1.2.0",
-=======
-  "version": "1.1.0",
->>>>>>> feat/login
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node src/main/server.ts",
     "build": "rimraf dist && tsc",
-    "debug": "node --inspect=0.0.0.0:9222 --nolazy src/main/server.ts",
+    "debug": "node --inspect=0.0z3.0.0:9222 --nolazy src/main/server.ts",
     "down": "sudo docker-compose down",
     "up": "npm run build && sudo docker-compose up -d",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
