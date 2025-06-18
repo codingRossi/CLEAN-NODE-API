@@ -1,5 +1,5 @@
-import { InvalidParamError } from "../../errors/index"
-import { badRequest, ok, serverError } from "../../helper/http/httpHelper"
+import { EmailInUserError, InvalidParamError } from "../../errors/index"
+import { badRequest, forbidden, ok, serverError } from "../../helper/http/httpHelper"
 import { Authentication } from "../login/login-controller-protocols"
 import { Controller, HttpRequest, HttpResponse, AddAccount, Validation } from "./signup-controller-protocols"
 
@@ -21,6 +21,9 @@ export class SignUpController implements Controller {
         name,
         password
       })
+      if (!account) {
+        return forbidden(new EmailInUserError())
+      }
       const accessToken = this.authentication.auth({
         email,
         password
