@@ -21,11 +21,11 @@ export class SignUpController implements Controller {
         name,
         password
       })
-      this.authentication.auth({
+      const accessToken = this.authentication.auth({
         email,
         password
       })
-      return ok(account)
+      return ok({ accessToken })
     } catch (error) {
       console.error(error)
       return serverError(error)
