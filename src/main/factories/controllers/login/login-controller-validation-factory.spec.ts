@@ -1,10 +1,10 @@
-import { CompareFieldsValidation } from "../../../presentation/helper/validators/compare-fields-validation"
-import { EmailValidation } from "../../../presentation/helper/validators/email-validation"
-import { RequiredFieldsValidation } from "../../../presentation/helper/validators/required-field-validation"
-import { ValidationComposite } from "../../../presentation/helper/validators/validation-composite"
-import { Validation } from "../../../presentation/protocols/validators"
-import { EmailValidator } from "../../../presentation/protocols/emailValidator"
-import { makeLoginValidation } from "./login-validations-factory"
+import { CompareFieldsValidation } from "../../../../presentation/helper/validators/compare-fields-validation"
+import { EmailValidation } from "../../../../presentation/helper/validators/email-validation"
+import { RequiredFieldsValidation } from "../../../../presentation/helper/validators/required-field-validation"
+import { ValidationComposite } from "../../../../presentation/helper/validators/validation-composite"
+import { Validation } from "../../../../presentation/protocols/validators"
+import { EmailValidator } from "../../../../presentation/protocols/emailValidator"
+import { makeLoginValidation } from "./login-controller-validations-factory"
 
 jest.mock("../../../presentation/helper/validators/validation-composite")
 
