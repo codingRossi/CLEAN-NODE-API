@@ -59,7 +59,7 @@ const makeSut = (): SutTypes => {
     sut,
     HasherStub,
     addAccountRepositoryStub,
-    loadAccountByEmailRepositoryStub
+    loadAccountByEmailRepositoryStub,
   }
 }
 

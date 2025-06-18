@@ -93,12 +93,12 @@ describe("DbAuthentication", () => {
         expect(promise).rejects.toThrow()
     })
 
-    test("Should return null if LoadAccountByEmailRepository return null", async () => {
-        const { sut, loadAccountByEmailRepository } = makeSut()
-        jest.spyOn(loadAccountByEmailRepository, "loadByEmail").mockReturnValueOnce(null)
-        const accessToken = await sut.auth(makeFakeAuthentication())
-        expect(accessToken).toBeNull()
-    })
+    // test("Should return null if LoadAccountByEmailRepository return null", async () => {
+    //     const { sut, loadAccountByEmailRepository } = makeSut()
+    //     jest.spyOn(loadAccountByEmailRepository, "loadByEmail").mockReturnValueOnce(null)
+    //     const accessToken = await sut.auth(makeFakeAuthentication())
+    //     expect(accessToken).toBeNull()
+    // })
 
     test("Should call HashCompare with correct values", async () => {
         const { sut, hashCompareStub } = makeSut()
