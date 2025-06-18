@@ -1,9 +1,14 @@
 import { InvalidParamError } from "../../errors/index"
 import { badRequest, ok, serverError } from "../../helper/http/httpHelper"
+import { Authentication } from "../login/login-controller-protocols"
 import { Controller, HttpRequest, HttpResponse, AddAccount, Validation } from "./signup-controller-protocols"
 
 export class SignUpController implements Controller {
-  constructor(private readonly addAccount: AddAccount, private readonly validation: Validation) {}
+  constructor(
+    private readonly addAccount: AddAccount,
+    private readonly validation: Validation,
+    private readonly authentication: Authentication
+  ) {}
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const error = this.validation.validate(httpRequest.body)
@@ -15,6 +20,10 @@ export class SignUpController implements Controller {
         email,
         name,
         password
+      })
+      this.authentication.auth({
+        email,
+         password
       })
       return ok(account)
     } catch (error) {
