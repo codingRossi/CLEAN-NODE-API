@@ -23,7 +23,7 @@ export class SignUpController implements Controller {
       })
       this.authentication.auth({
         email,
-         password
+        password
       })
       return ok(account)
     } catch (error) {
