@@ -1,3 +1,4 @@
 export interface Validation {
-  validate(input: any): Error
+  // temporario
+  validate(input: any): Error | null
 }
