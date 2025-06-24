@@ -1,7 +1,7 @@
 import { AccountModel } from "../models/account"
 
 export interface AddSurveyModel {
-  questions: string
+  question: string
   answers: SurveyAnswer[]
 }
 
