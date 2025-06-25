@@ -3,6 +3,7 @@ import { forbidden } from "../helper/http/httpHelper"
 import { AuthMiddleware } from "./auth-middlware"
 import { LoadAccountByToken } from "../../domain/use-cases/load-account-by-token"
 import { AccountModel } from "../../domain/models/account"
+import { HttpRequest } from "../protocols"
 
 
 const makeFakeAccount = (): AccountModel => ({
@@ -11,6 +12,14 @@ const makeFakeAccount = (): AccountModel => ({
     email: "valid_email@mail.com",
     password: "hashed_password"
 })
+
+
+const makeFakeRequest = (): HttpRequest => ({
+    headers: {
+        "x-access-token": "any-token"
+    }
+})
+
 
 interface SutTypes {
     sut: AuthMiddleware
@@ -48,11 +57,7 @@ describe("Auth Middlaware", () => {
     test("Should call LoadAccountByToken with correct accessToken", async () => {
         const { sut, loadAccountByTokenStub } = makeSut()
         const loadSpy = jest.spyOn(loadAccountByTokenStub, "load")
-        await sut.handle({
-            headers: {
-                "x-access-token": "any-token"
-            }
-        })
+        await sut.handle(makeFakeRequest())
         expect(loadSpy).toHaveBeenCalledWith("any-token")
     })
 })
