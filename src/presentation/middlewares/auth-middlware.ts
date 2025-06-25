@@ -1,4 +1,3 @@
-import { resolve } from "path";
 import { AccessDeniedError } from "../errors";
 import { forbidden } from "../helper/http/httpHelper";
 import { HttpRequest, HttpResponse } from "../protocols";
