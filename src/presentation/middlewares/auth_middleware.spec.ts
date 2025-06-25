@@ -1,10 +1,7 @@
 import { AccessDeniedError } from "../errors"
 import { forbidden, ok } from "../helper/http/httpHelper"
 import { AuthMiddleware } from "./auth-middlware"
-import { LoadAccountByToken } from "../../domain/use-cases/load-account-by-token"
-import { AccountModel } from "../../domain/models/account"
-import { HttpRequest } from "../protocols"
-
+import { AccountModel, LoadAccountByToken, HttpRequest } from "./auth-middlware-protocols"
 
 const makeFakeAccount = (): AccountModel => ({
     id: "valid_id",
@@ -56,9 +53,9 @@ describe("Auth Middlaware", () => {
 
     test("Should call LoadAccountByToken with correct accessToken", async () => {
         const role = "any_role"
-        const { sut, loadAccountByTokenStub } = makeSut()
+        const { sut, loadAccountByTokenStub } = makeSut(role)
         const loadSpy = jest.spyOn(loadAccountByTokenStub, "load")
-        await sut.handle(makeFakeRequest(), role)
+        await sut.handle(makeFakeRequest())
         expect(loadSpy).toHaveBeenCalledWith("any-token")
     })
 
