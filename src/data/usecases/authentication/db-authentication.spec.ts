@@ -55,7 +55,7 @@ const makeUpdateAccessEncrypter = (): UpdateAccessTokenRepository => {
 }
 
 
-interface SutTypes {
+type SutTypes = {
     sut: DbAuthentication
     loadAccountByEmailRepository: LoadAccountByEmailRepository,
     hashCompareStub: HashComparer,
@@ -66,7 +66,7 @@ interface SutTypes {
 const makeSut = (): SutTypes => {
     const loadAccountByEmailRepository = makeLoadAccountByEmailRepository()
     const hashCompareStub = makeHashCompare()
-    const EncrypterStub =  makeEncrypter()
+    const EncrypterStub = makeEncrypter()
     const updateAccessTokenRepositoryStub = makeUpdateAccessEncrypter()
     const sut = new DbAuthentication(loadAccountByEmailRepository, hashCompareStub, EncrypterStub, updateAccessTokenRepositoryStub)
     return {

@@ -18,7 +18,7 @@ const makeFakeRequest = (): HttpRequest => ({
 })
 
 
-interface SutTypes {
+type SutTypes = {
     sut: AuthMiddleware
     loadAccountByTokenStub: LoadAccountByToken
 }
@@ -61,7 +61,6 @@ describe("Auth Middlaware", () => {
 
     test("Should return 403 if LoadAccountByToken returns null", async () => {
         const { sut, loadAccountByTokenStub } = makeSut()
-        //@ts-expect-error
         jest.spyOn(loadAccountByTokenStub, "load").mockReturnValueOnce(new Promise(resolve => resolve(null)))
         const httpResponse = await sut.handle({})
         expect(httpResponse).toBe(forbidden(new AccessDeniedError()))

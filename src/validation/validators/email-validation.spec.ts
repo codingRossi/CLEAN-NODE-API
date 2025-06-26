@@ -3,7 +3,7 @@ import { InvalidParamError, ServerError } from "../../errors"
 import { EmailValidator } from "../../protocols/emailValidator"
 import { serverError } from "../http/httpHelper"
 
-interface SutTypes {
+type SutTypes = {
   sut: EmailValidation
   emailValidatorStub: EmailValidator
 }

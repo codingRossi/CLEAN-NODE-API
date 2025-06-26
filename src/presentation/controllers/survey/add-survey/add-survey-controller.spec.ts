@@ -34,7 +34,7 @@ const makeAddSurvey = (): AddSurvey => {
 }
 
 
-interface SutTypes {
+type SutTypes = {
     sut: AddSurveyController
     validationStub: Validation
     addSurveyStub: AddSurvey

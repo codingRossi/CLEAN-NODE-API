@@ -1,4 +1,4 @@
-import { LogErrorRepository } from "../../data/protocols/log-error-repository"
+import { LogErrorRepository } from "@/data/usecases/add-account/db-add-account-protocols"
 import { AccountModel } from "../../domain/models/account"
 import { ok, serverError } from "../../presentation/helper/http/httpHelper"
 import { Controller, HttpRequest, HttpResponse } from "../../presentation/protocols"
@@ -48,7 +48,7 @@ const makeFakeServerError = (): HttpResponse => {
   return serverError(fakeError)
 }
 
-interface SutTypes {
+type SutTypes = {
   sut: LogControllerDecorator
   controllerStub: Controller
   logErrorRepositoryStub: LogErrorRepository

@@ -15,7 +15,7 @@ const makeFakeRequest = (): HttpRequest => ({
   }
 })
 
-interface SutTypes {
+type SutTypes = {
   sut: SignUpController
   addAccountStub: AddAccount,
   validationStub: Validation
@@ -106,24 +106,24 @@ describe("Signup Controller", () => {
   })
 
   test("Should call Authentication with correct values", async () => {
-      const { sut, authenticationStub } = await makeSut()
-      const authSpy = jest.spyOn(authenticationStub, "auth")
-      await sut.handle(makeFakeRequest())
-      expect(authSpy).toHaveBeenCalledWith({email: "any_email@gmail.com", password: "any_password"})
-    })
+    const { sut, authenticationStub } = await makeSut()
+    const authSpy = jest.spyOn(authenticationStub, "auth")
+    await sut.handle(makeFakeRequest())
+    expect(authSpy).toHaveBeenCalledWith({ email: "any_email@gmail.com", password: "any_password" })
+  })
 
-    test("Should return 500 if Authentication throws", async () => {
-        const { sut, authenticationStub } = await makeSut()
-        jest.spyOn(authenticationStub, "auth").mockReturnValueOnce(new Promise((resolve, rejects) => rejects(new Error())))
-        const httpResponse = await sut.handle(makeFakeRequest())
-        expect(httpResponse).toEqual(serverError(new Error()))
-      })
-    
-      test("Should return 403 if AddAccount returns nul", async () => {
-        const { sut, addAccountStub } = await makeSut()
-        jest.spyOn(addAccountStub, "add").mockRejectedValueOnce(new Promise(resolve => resolve(null)))
-        const httpResponse = await sut.handle(makeFakeRequest())
-        expect(httpResponse).toEqual(forbidden(new EmailInUserError()))
+  test("Should return 500 if Authentication throws", async () => {
+    const { sut, authenticationStub } = await makeSut()
+    jest.spyOn(authenticationStub, "auth").mockReturnValueOnce(new Promise((resolve, rejects) => rejects(new Error())))
+    const httpResponse = await sut.handle(makeFakeRequest())
+    expect(httpResponse).toEqual(serverError(new Error()))
+  })
+
+  test("Should return 403 if AddAccount returns nul", async () => {
+    const { sut, addAccountStub } = await makeSut()
+    jest.spyOn(addAccountStub, "add").mockRejectedValueOnce(new Promise(resolve => resolve(null)))
+    const httpResponse = await sut.handle(makeFakeRequest())
+    expect(httpResponse).toEqual(forbidden(new EmailInUserError()))
   })
 
 })
