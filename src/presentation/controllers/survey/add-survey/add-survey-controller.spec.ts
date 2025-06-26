@@ -91,6 +91,7 @@ describe("AddSurvey Controller", () => {
         expect(httpRequest).toEqual(serverError(new Error()))
     })
 
+    //wrong name
     test("Should return 500 if AddSurvey throws", async () => {
         const { sut } = makeSut()
         const httpResponse = await sut.handle(makeFakeRequest())
