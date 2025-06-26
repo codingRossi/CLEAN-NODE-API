@@ -19,6 +19,9 @@ const config = {
   transform: {
     ".+\\.ts$": "ts-jest"
   },
+  moduleNameMapper: {
+    "@/(.*)": "<rootDir>/src/$1"
+  }
 };
 
 module.exports = config;
