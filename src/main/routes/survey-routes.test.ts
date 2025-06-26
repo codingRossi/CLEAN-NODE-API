@@ -25,7 +25,7 @@ describe("POST /surveys", () => {
           image: "http://image-name.com"
         }, {
           answer: "Answer 2"
-        }]
+        }],
       })
       .expect(403)
   })

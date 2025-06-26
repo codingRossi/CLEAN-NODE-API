@@ -3,6 +3,7 @@ import { AccountModel } from "../models/account"
 export interface AddSurveyModel {
   question: string
   answers: SurveyAnswer[]
+  date: Date
 }
 
 export interface SurveyAnswer {
