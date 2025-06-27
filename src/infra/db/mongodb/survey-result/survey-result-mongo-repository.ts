@@ -14,7 +14,8 @@ export class SurveyResultMongoRepository implements SaveSurveyResultRepository {
             }
         }, {
             upsert: true,
-            // returnOriginal: false you need to fix that
+            // returnDocument could make shit on mine code
+            returnDocument: 'after'
         })
 
         return res.value && MongoHelper.map(res.value)
