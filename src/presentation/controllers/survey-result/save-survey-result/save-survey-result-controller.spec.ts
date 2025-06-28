@@ -6,6 +6,9 @@ import { InvalidParamError } from "@/presentation/errors"
 const makeFakeRequest = (): HttpRequest => ({
     params: {
         surveyId: "surveyId"
+    },
+    body: {
+        answer: "any_answer"
     }
 })
 
@@ -51,5 +54,18 @@ describe("SaveSurveyResult Controller", () => {
         jest.spyOn(loadSurveyByIdStub, "loadById").mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
         const httpRequest = await sut.handle({})
         expect(httpRequest).toEqual(serverError(new Error()))
+    })
+
+    test("Should return 403 if an invalid awnser id provided", async () => {
+        const { sut } = makeSut()
+        const httpResponse = sut.handle({
+            params: {
+                surveyId: "surveyId"
+            },
+            body: {
+                answer: "wrong_answer"
+            }
+        })
+        expect(httpResponse).toEqual(forbidden(new InvalidParamError("answer")))
     })
 })
