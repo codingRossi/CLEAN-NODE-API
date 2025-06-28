@@ -1,5 +1,0 @@
-export * from "../../protocols/cryptography/decrypter"
-export * from "../add-account/db-add-account-protocols"
-export * from "./db-load-account-token"
-export * from "../../protocols/db/account/load-account-by-token-repository"
-export * from "@/domain/use-cases/load-account-by-token"

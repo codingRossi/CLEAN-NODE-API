@@ -1,5 +1,4 @@
 import { AccountModel, DbLoadAccountByToken, Decrypter, LoadAccountByTokenRepository } from "./db-load-account-token-protocols"
-
 type SutTypes = {
     sut: DbLoadAccountByToken
     decrypterStub: Decrypter
